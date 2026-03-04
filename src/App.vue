@@ -3,14 +3,7 @@
         <h1 class="title">Calculadora de Gorjeta e Divisao</h1>
 
         <div class="layout">
-            <div class="panel">
-                <h2>Entradas</h2>
-                <input v-model="bill" class="input" placeholder="Valor" />
-                <input v-model="tip" class="input" placeholder="Porcentagem" />
-                <input v-model="people" class="input" placeholder="Pessoas" />
-                <button class="small-btn" @click="calculate">Calcular</button>
-            </div>
-
+            <entradas/>            
             <div class="panel">
                 <h2>Resultado</h2>
                 <div class="result">Total: {{ total }}</div>
@@ -23,7 +16,9 @@
 </template>
 
 <script setup>
+import entradas from './components/entradas.vue';
 import { ref } from 'vue';
+
 
 const bill = ref('');
 const tip = ref('');
