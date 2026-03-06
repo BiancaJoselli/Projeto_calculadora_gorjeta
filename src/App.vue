@@ -6,43 +6,32 @@
             <entradas/>            
             <div class="panel">
                 <h2>Resultado</h2>
-                <div class="result">Total: {{ total }}</div>
-                <div class="result">Gorjeta: {{ tipValue }}</div>
-                <div class="result">Por pessoa: {{ perPerson }}</div>
-                <div class="result">{{ message }}</div>
+                <div class="result">Total: {{ itensStore.total }}</div>
+                <div class="result">Gorjeta: {{ itensStore.tipValue }}</div>
+                <div class="result">Por pessoa: {{ itensStore.perPerson }}</div>
+                <div class="result">{{ itensStore.message }}</div>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-import entradas from './components/entradas.vue';
-import { ref } from 'vue';
+import Entradas from './components/entradas.vue';
+import {useItensStore} from './store/itens';
 
-
-const bill = ref('');
-const tip = ref('');
-const people = ref('');
-
-const total = ref(0);
-const tipValue = ref(0);
-const perPerson = ref(0);
-const message = ref('');
-
-function calculate() {
-    const billValue = Number(bill.value);
-    const tipPercent = Number(tip.value);
-    const peopleCount = Number(people.value);
-
-    if (!billValue || !tipPercent || !peopleCount) {
-        alert('Preencha os dados');
-        message.value = 'Algo deu errado.';
-        return;
-    }
-
-    tipValue.value = (billValue * tipPercent) / 100;
-    total.value = billValue + tipValue.value;
-    perPerson.value = total.value / peopleCount;
-    message.value = 'Ok';
-}
+const itensStore = useItensStore()
 </script>
+
+<style scoped>
+h1 {
+    font-size: 2vw;
+    margin: 1vw 0 0 1vw;
+
+}
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 3vw;
+    }
+}
+</style>

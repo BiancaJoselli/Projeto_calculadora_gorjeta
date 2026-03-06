@@ -33,7 +33,7 @@ const message = ref('');
     perPerson.value = total.value / peopleCount;
     message.value = 'Ok';
 }
- 
+
 return {bill, tip, people, total, tipValue, perPerson, message, calculate}
 
 
